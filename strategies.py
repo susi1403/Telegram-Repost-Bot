@@ -50,7 +50,7 @@ class _CallOutAllIndividualRepostsStrategy(RepostCalloutStrategy):
 
     @staticmethod
     def get_required_strings() -> List[str]:
-        return ["repost_alert", "first_repost_callout", "final_repost_callout", "intermediary_callouts"]
+        return ["repost_alert", "first_repost_callout", "intermediary_callouts"]
 
     def callout(self, update: Update, context: CallbackContext, hash_to_message_id_dict: Dict[str, List[int]]):
         super().callout(update, context, hash_to_message_id_dict)
@@ -66,10 +66,10 @@ class _CallOutAllIndividualRepostsStrategy(RepostCalloutStrategy):
                 msg = self._get_random_intermediary_message(prev_msg)
                 if i == 0:
                     msg = self.strings["first_repost_callout"]
+                else:
+                    pass
                 prev_msg = msg
                 bot.send_message(cid, _format_response_with_name(msg, name), reply_to_message_id=repost_msg)
-            bot.send_chat_action(cid, ChatAction.TYPING)
-            message.reply_text(_format_response_with_name(self.strings["final_repost_callout"], name))
 
     def _get_random_intermediary_message(self, prev_msg: str):
         return random.choice([response for response in self.strings["intermediary_callouts"] if response != prev_msg])
