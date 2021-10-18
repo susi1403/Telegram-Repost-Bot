@@ -1,1 +1,1 @@
-bash: python main.py -c CONFIG_FILE_PATH
+worker: python main.py -c CONFIG_FILE_PATH
