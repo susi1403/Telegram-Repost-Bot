@@ -1,1 +1,1 @@
-python main.py -c CONFIG_FILE_PATH
+bash: python main.py -c CONFIG_FILE_PATH
