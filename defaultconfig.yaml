@@ -11,7 +11,7 @@ hash_size: 22                     # lower numbers = smaller file sizes, but less
                                   # try not to go below 20; higher than 24 may result in false negatives.
 repost_callout_timeout: 15        # time in seconds that must pass before repost bot will make another callout in a group.
 auto_call_out: true               # whether the bot should automatically call out reposts or wait for a specific query.
-callout_style: "singular"         # "verbose" or "singular". determines if bot calls out each repost individually or
+callout_style: "verbose"         # "verbose" or "singular". determines if bot calls out each repost individually or
                                   # addresses it with a single response. warning: "verbose" can be very spammy, but it
                                   # is pretty funny.
                                   #
