@@ -66,10 +66,8 @@ class _CallOutAllIndividualRepostsStrategy(RepostCalloutStrategy):
                 msg = self._get_random_intermediary_message(prev_msg)
                 if i == 0:
                     msg = self.strings["first_repost_callout"]
-                else:
-                    pass
-                prev_msg = msg
-                bot.send_message(cid, _format_response_with_name(msg, name), reply_to_message_id=repost_msg)
+                    prev_msg = msg
+                    bot.send_message(cid, _format_response_with_name(msg, name), reply_to_message_id=repost_msg)
 
     def _get_random_intermediary_message(self, prev_msg: str):
         return random.choice([response for response in self.strings["intermediary_callouts"] if response != prev_msg])
