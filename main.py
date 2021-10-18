@@ -11,7 +11,7 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 
 logger = logging.getLogger(__name__)
 
-locale.setlocale(locale.LC_ALL, 'en_US')
+#locale.setlocale(locale.LC_ALL, 'en_US')
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Run an instance of Repost Bot over Telegram")
