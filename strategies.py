@@ -66,7 +66,6 @@ class _CallOutAllIndividualRepostsStrategy(RepostCalloutStrategy):
                 msg = self._get_random_intermediary_message(prev_msg)
                 if i == 0:
                     msg = self.strings["first_repost_callout"]
-                    break
                 prev_msg = msg
                 bot.send_message(cid, _format_response_with_name(msg, name), reply_to_message_id=repost_msg)
             bot.send_chat_action(cid, ChatAction.TYPING)
