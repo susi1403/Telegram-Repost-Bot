@@ -60,10 +60,10 @@ class _CallOutAllIndividualRepostsStrategy(RepostCalloutStrategy):
         name = _get_name_to_use(update)
         for message_ids in hash_to_message_id_dict.values():
             prev_msg = ""
-            #message.reply_text(self.strings["repost_alert"])
+            message.reply_text(self._get_random_intermediary_message(prev_msg))
             for i, repost_msg in enumerate(message_ids[:-1]):
                 bot.send_chat_action(cid, ChatAction.TYPING)
-                msg = self._get_random_intermediary_message(prev_msg)
+                #msg = self._get_random_intermediary_message(prev_msg)
                 if i == 0:
                     msg = self.strings["first_repost_callout"]
                 prev_msg = msg
