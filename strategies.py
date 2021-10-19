@@ -59,8 +59,8 @@ class _CallOutAllIndividualRepostsStrategy(RepostCalloutStrategy):
         bot = context.bot
         name = _get_name_to_use(update)
         for message_ids in hash_to_message_id_dict.values():
-            message.reply_text(self.strings["repost_alert"])
             prev_msg = ""
+            #message.reply_text(self.strings["repost_alert"])
             for i, repost_msg in enumerate(message_ids[:-1]):
                 bot.send_chat_action(cid, ChatAction.TYPING)
                 msg = self._get_random_intermediary_message(prev_msg)
@@ -71,7 +71,7 @@ class _CallOutAllIndividualRepostsStrategy(RepostCalloutStrategy):
                 break
 
     def _get_random_intermediary_message(self, prev_msg: str):
-        return random.choice([response for response in self.strings["intermediary_callouts"] if response != prev_msg])
+        return random.choice([response for response in self.strings["repost_alert"] if response != prev_msg])
 
 
 class _CallOutNumberOfRepostsStrategy(RepostCalloutStrategy):
