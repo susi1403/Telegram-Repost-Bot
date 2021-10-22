@@ -84,8 +84,8 @@ class Repostitory:
             return WhitelistAddStatus.SUCCESS
         return WhitelistAddStatus.FAIL
 
-    def reset_group_repost_data(self, group_id: int) -> NoReturn:
-        self.save_group_data(group_id, self._get_empty_group_file_structure())
+    #def reset_group_repost_data(self, group_id: int) -> NoReturn:
+     #   self.save_group_data(group_id, self._get_empty_group_file_structure())
 
     def get_tracking_data(self, group_id: int):
         return self.get_group_data(group_id).get("track", self.default_callout_settings)
