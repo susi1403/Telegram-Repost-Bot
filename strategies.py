@@ -53,22 +53,25 @@ class _CallOutAllIndividualRepostsStrategy(RepostCalloutStrategy):
         return ["repost_alert", "first_repost_callout", "final_repost_callout", "intermediary_callouts"]
 
     def callout(self, update: Update, context: CallbackContext, hash_to_message_id_dict: Dict[str, List[int]]):
-        super().callout(update, context, hash_to_message_id_dict)
-        message = update.message
-        cid = message.chat.id
-        bot = context.bot
-        name = _get_name_to_use(update)
-        for message_ids in hash_to_message_id_dict.values():
-            prev_msg = ""
-            message.reply_text(self._get_random_intermediary_message(prev_msg))
-            for i, repost_msg in enumerate(message_ids[:-1]):
-                bot.send_chat_action(cid, ChatAction.TYPING)
-                #msg = self._get_random_intermediary_message(prev_msg)
-                if i == 0:
-                    msg = self.strings["first_repost_callout"]
-                prev_msg = msg
-                bot.send_message(cid, _format_response_with_name(msg, name), reply_to_message_id=repost_msg)
-                break
+        try:
+            super().callout(update, context, hash_to_message_id_dict)
+            message = update.message
+            cid = message.chat.id
+            bot = context.bot
+            name = _get_name_to_use(update)
+            for message_ids in hash_to_message_id_dict.values():
+                prev_msg = ""
+                message.reply_text(self._get_random_intermediary_message(prev_msg))
+                for i, repost_msg in enumerate(message_ids[:-1]):
+                    bot.send_chat_action(cid, ChatAction.TYPING)
+                    #msg = self._get_random_intermediary_message(prev_msg)
+                    if i == 0:
+                        msg = self.strings["first_repost_callout"]
+                    prev_msg = msg
+                    bot.send_message(cid, _format_response_with_name(msg, name), reply_to_message_id=repost_msg)
+                    break
+        except
+            pass
 
     def _get_random_intermediary_message(self, prev_msg: str):
         return random.choice([response for response in self.strings["repost_alert"] if response != prev_msg])
